@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Lyrics_Music</string>
+    <string name="Titulo">Como desea buscar:</string>
+    <string name="nombreAutor">Nombre del artista</string>
+    <string name="nombreCancion">Nombre de la canción</string>
+    <string name="autor">Artista</string>
+    <string name="Album">Album</string>
+    <string name="Buscar">Buscar</string>
 </resources>
