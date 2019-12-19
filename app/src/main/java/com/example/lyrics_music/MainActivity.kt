@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         var cancion = findViewById<EditText>(R.id.eTxtCancion)
         var album = eTxtCancion.text
 
+
+
         btnBuscar.setOnClickListener(){
 
         httpVoley_Cancion(getCancion(cancion.text.toString()))
@@ -63,8 +65,9 @@ class MainActivity : AppCompatActivity() {
     val gson= Gson()
     val apiResponse=gson.fromJson(response, Json ::class.java)
 
-        for(num in 0.. itemList.size){
-                itemList.clear()
+
+        for (num in 0..itemList.size) {
+            itemList.clear()
         }
 
         var recycleView: RecyclerView= findViewById(R.id.recycleView)
@@ -76,6 +79,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+
 
         itemList.add(Result(album = apiResponse.result[0].album,artist = apiResponse.result[0].artist,title = apiResponse.result[0].title))
         itemList.add(Result(album = apiResponse.result[1].album,artist = apiResponse.result[1].artist,title = apiResponse.result[1].title))
