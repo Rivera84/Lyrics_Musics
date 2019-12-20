@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AADAD3"
+    tools:context=".letra_Cancion">
+
+    <TextView
+        android:id="@+id/txtSong"
+        android:layout_width="146dp"
+        android:layout_height="29dp"
+
+        android:translationX="180dp"
+        android:translationY="20dp" />
+
+    <ScrollView
+        android:layout_width="381dp"
+        android:layout_height="627dp"
+        android:translationX="-130dp"
+        android:translationY="80dp">
+
+        <TextView
+            android:id="@+id/txtLetra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@android:color/background_dark"
+            android:textSize="16sp" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="150dp"
+        android:layout_height="31dp"
+        android:text="@string/nombreCancion"
+        android:textAlignment="viewEnd"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:translationX="-500dp"
+        android:translationY="20dp" />
+
+</LinearLayout>

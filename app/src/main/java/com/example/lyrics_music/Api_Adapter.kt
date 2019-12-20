@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -22,7 +21,7 @@ class Api_Adapter (var context: Context,  itemList: ArrayList<Result>, var click
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var v: View = LayoutInflater.from(mContext).inflate(R.layout.aource_adapter,parent,false)
+        val v: View = LayoutInflater.from(mContext).inflate(R.layout.aource_adapter,parent,false)
         return  ViewHolder(v,clickListener)
     }
 
@@ -31,11 +30,11 @@ class Api_Adapter (var context: Context,  itemList: ArrayList<Result>, var click
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        var itemContentMusic = mItemList.get(position)
+        val itemContentMusic = mItemList[position]
 
-        var title = itemContentMusic.title
-        var artist= itemContentMusic.artist
-        var album = itemContentMusic.album
+        val title = itemContentMusic.title
+        val artist= itemContentMusic.artist
+        val album = itemContentMusic.album
 
 
 
@@ -43,7 +42,6 @@ class Api_Adapter (var context: Context,  itemList: ArrayList<Result>, var click
         holder.txtArtistaCancion.text=artist
         holder.txtAlbumCancion.text=album
 
-        //Picasso.get().load(image).fit().centerInside().into(holder.imageView)
 
     }
 }

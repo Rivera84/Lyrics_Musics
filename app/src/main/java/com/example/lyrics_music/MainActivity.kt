@@ -1,14 +1,16 @@
 package com.example.lyrics_music
 
+import android.content.Context
+import android.content.Intent
 import android.inputmethodservice.Keyboard
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.size
+import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -25,16 +27,16 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var cancion = findViewById<EditText>(R.id.eTxtCancion)
-        var album = eTxtCancion.text
+        val cancion = findViewById<EditText>(R.id.eTxtCancion)
 
 
 
-        btnBuscar.setOnClickListener(){
+
+        btnBuscar.setOnClickListener{
 
         httpVoley_Cancion(getCancion(cancion.text.toString()))
 
-            Toast.makeText(this, cancion.text, Toast.LENGTH_LONG).show()
+
 
         }
 
@@ -70,15 +72,6 @@ class MainActivity : AppCompatActivity() {
             itemList.clear()
         }
 
-        var recycleView: RecyclerView= findViewById(R.id.recycleView)
-        recycleView.setHasFixedSize(true)
-        recycleView.layoutManager= LinearLayoutManager(this)
-        val adapter= Api_Adapter(this,itemList,object : ClickListener{
-            override fun onClick(view: View, index: Int) {
-                Log.d("HTTP Response",response)
-            }
-
-        })
 
 
 
@@ -93,9 +86,27 @@ class MainActivity : AppCompatActivity() {
         itemList.add(Result(album = apiResponse.result[8].album,artist = apiResponse.result[8].artist,title = apiResponse.result[8].title))
         itemList.add(Result(album = apiResponse.result[9].album,artist = apiResponse.result[9].artist,title = apiResponse.result[9].title))
 
+        val recycleView: RecyclerView= findViewById(R.id.recycleView)
+        recycleView.setHasFixedSize(true)
+        recycleView.layoutManager= LinearLayoutManager(this)
+        val adapter= Api_Adapter(this,itemList,object : ClickListener{
+            override fun onClick(view: View, index: Int) {
+               val artista= apiResponse.result[index].artist
+                val cancion=apiResponse.result[index].title
 
+               val intent= Intent(this@MainActivity,letra_Cancion::class.java)
+                intent.putExtra("cancion",cancion)
+                intent.putExtra("artista",artista)
+                startActivity(intent)
+
+
+            }
+
+        })
 
         recycleView.adapter=adapter
         adapter.notifyDataSetChanged()
     }
+
+
 }
